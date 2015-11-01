@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+
+<!-- =============================================================== -->
+<!-- Configure Jetty Plus features                                   -->
+<!--                                                                 -->
+<!-- This file sets up a WebAppDeployer to automatically deploy all  -->
+<!-- webapps in $jetty.home/webapps-plus at startup time, and to     -->
+<!-- enable all of them with Plus features (jndi etc).               -->
+<!--                                                                 -->
+<!-- You can instead configure individual webapps with Jetty Plus    -->
+<!-- features by using the ContextDeployer (configured in            -->
+<!-- $jetty.home/etc/jetty.xml), and ensuring that you set the       -->
+<!-- same set of classes listed below in the "plusConfig" as the     -->
+<!-- webapp's configurationClasses.                                  -->
+<!--                                                                 -->
+<!-- For more information about Jetty Plus, see the Jetty wiki at    -->
+<!-- http://docs.codehaus.org/display/JETTY/Jetty+Wiki               -->
+<!-- =============================================================== -->
+<Configure id="Server" class="org.mortbay.jetty.Server">
+
+  <!-- =========================================================== -->
+  <!-- Configurations for WebAppContexts                           -->
+  <!-- Sequence of configurations to enable Plus features.         -->
+  <!-- =========================================================== -->
+  <Array id="plusConfig" type="java.lang.String">
+    <Item>org.mortbay.jetty.webapp.WebInfConfiguration</Item>
+    <Item>org.mortbay.jetty.plus.webapp.EnvConfiguration</Item>
+    <Item>org.mortbay.jetty.plus.webapp.Configuration</Item>
+    <Item>org.mortbay.jetty.webapp.JettyWebXmlConfiguration</Item>
+    <Item>org.mortbay.jetty.webapp.TagLibConfiguration</Item>
+  </Array>
+  	
+
+</Configure>
